@@ -1,22 +1,16 @@
-FROM golang:1.22.0 AS build
+FROM --platform=linux/amd64 golang:1.22 AS build-stage
 
 WORKDIR /app
 
 COPY go.mod .
+COPY go.sum .
 RUN go mod download
+
+RUN ls /
+
+COPY ./libWeWorkFinanceSdk_C.so /usr/lib
+COPY ./libWeWorkFinanceSdk_C.so /usr/lib64
 
 COPY *.go ./
 
-RUN go build -o /cicd-demo
-
-FROM gcr.io/distroless/base-debian10
-
-WORKDIR /
-
-COPY --from=build /cicd-demo /cicd-demo
-
-EXPOSE 8080
-
-USER nonroot:nonroot
-
-ENTRYPOINT ["/cicd-demo"]
+CMD ["bash"]

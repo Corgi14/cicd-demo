@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  linux-x86-64-env:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: linux-x86-64-env:composed
+    volumes:
+      - ./:/app
+    container_name: linux-x86-64-env
