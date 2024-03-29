@@ -28,7 +28,7 @@ func main() {
 	}
 
 	//同步消息
-	chatDataList, err := client.GetChatData(4, 100, "", "", 3)
+	chatDataList, err := client.GetChatData(8, 100, "", "", 3)
 	if err != nil {
 		fmt.Printf("消息同步失败：%v \n", err)
 		return
@@ -58,6 +58,8 @@ func main() {
 			cd.Message = chatInfo.GetRevokeMessage()
 		case "agree":
 			cd.Message = chatInfo.GetAgreeMessage()
+		case "disagree":
+			cd.Message = chatInfo.GetDisgreeMessage()
 		case "voice":
 			cd.Message = chatInfo.GetVoiceMessage()
 		case "video":

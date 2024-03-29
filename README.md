@@ -49,4 +49,30 @@ or
         }
     }
 ]
-````
+```
+
+```mermaid
+erDiagram
+  Message {
+    string MessageID
+    string Action
+    ToList[] ToList
+  }
+  ToList {
+    uint MessageID
+    string UserID
+  }
+  TextMessage {
+    string MessageID
+    string Content
+  }
+  ImageMessage {
+    string MessageID
+    string SdkFileID
+    string Md5Sum
+    uint32 FileSize
+  }
+  Message ||--|{ ToList: contains
+  Message ||--o{ TextMessage: contains
+  Message ||--o{ ImageMessage: contains
+```

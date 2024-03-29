@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY go.mod .
 COPY go.sum .
+COPY ./WeWorkFinanceSDK ./WeWorkFinanceSDK
 RUN go mod download
 
 RUN ls /
@@ -11,6 +12,6 @@ RUN ls /
 COPY ./libWeWorkFinanceSdk_C.so /usr/lib
 COPY ./libWeWorkFinanceSdk_C.so /usr/lib64
 
-COPY *.go ./
+# COPY  . .
 
 CMD ["bash"]
