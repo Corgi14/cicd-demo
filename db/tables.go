@@ -1,4 +1,4 @@
-package main
+package db
 
 type Message struct {
 	MessageID  string   `gorm:"primaryKey;type:varchar(255)"`
