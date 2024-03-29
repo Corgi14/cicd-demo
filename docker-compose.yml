@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  linux-x86-64-env:
+  chat-dev:
     build:
       context: .
       dockerfile: Dockerfile
-    image: linux-x86-64-env:composed
+    image: chat-dev:dev-build
     volumes:
       - ./:/app
-    container_name: linux-x86-64-env
+    container_name: chat-dev
